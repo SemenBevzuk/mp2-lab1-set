@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/UNN-VMK-Software/mp2-lab1-set.svg)][travis]
 Куча изменений. 
-<!-- TODO
+Еще одна куча изменений в ветке
+ <!-- TODO
   -
 -->
 
