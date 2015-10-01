@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/UNN-VMK-Software/mp2-lab1-set.svg)][travis]
 Куча изменений. 
 В мастере.
+Еще одна куча изменений в ветке
 <!-- TODO
   -
 -->
@@ -141,3 +142,4 @@ __Цель данной работы__  — разработка структу�
 [youtube-playlist]: https://www.youtube.com/playlist?list=PLSzOhsr5tmhrgV7u7CSzX4Ki1a9r0AKzV
 [slides]:      https://github.com/UNN-VMK-Software/mp2-lab1-set/tree/master/docs/slides
 [upstream]:    https://github.com/UNN-VMK-Software/mp2-lab1-set
+=======
