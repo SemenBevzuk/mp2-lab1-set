@@ -23,15 +23,18 @@ TSet::TSet(const TBitField &bf) : BitField(-1)
 
 TSet::operator TBitField()
 {
+  TBitField bf(0);
+  return bf;
 }
 
 int TSet::GetMaxPower(void) const // получить макс. к-во эл-тов
 {
+  return 0;
 }
 
 int TSet::IsMember(const int Elem) const // элемент множества?
 {
-    return 0;
+  return 0;
 }
 
 void TSet::InsElem(const int Elem) // включение элемента множества
@@ -46,43 +49,57 @@ void TSet::DelElem(const int Elem) // исключение элемента мн
 
 TSet& TSet::operator=(const TSet &s) // присваивание
 {
+  return *this;
 }
 
 int TSet::operator==(const TSet &s) const // сравнение
 {
-    return 0;
+  return 0;
 }
 
 int TSet::operator!=(const TSet &s) const // сравнение
 {
+  return 0;
 }
 
 TSet TSet::operator+(const TSet &s) // объединение
 {
+  TSet set2(0);
+  return set2;
 }
 
 TSet TSet::operator+(const int Elem) // объединение с элементом
 {
+  TSet set2(0);
+  return set2;
 }
 
 TSet TSet::operator-(const int Elem) // разность с элементом
 {
+  TSet set2(0);
+  return set2;
 }
 
 TSet TSet::operator*(const TSet &s) // пересечение
 {
+  TSet set2(0);
+  return set2;
 }
 
 TSet TSet::operator~(void) // дополнение
 {
+  TSet set2(0);
+  return set2;
 }
 
 // перегрузка ввода/вывода
 
 istream &operator>>(istream &istr, TSet &s) // ввод
 {
+  return istr;
 }
 
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
+  return ostr;
 }
