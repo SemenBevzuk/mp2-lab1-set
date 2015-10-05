@@ -31,10 +31,10 @@ TEST(TBitField, can_set_bit)
 {
   TBitField bf(10);
 
-  EXPECT_EQ(0, bf.GetBit(3));
+  ASSERT_EQ(0, bf.GetBit(3));
 
   bf.SetBit(3);
-  EXPECT_NE(0, bf.GetBit(3));
+  ASSERT_EQ(1, bf.GetBit(3));
 }
 
 TEST(TBitField, can_clear_bit)
