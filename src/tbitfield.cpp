@@ -62,7 +62,11 @@ void TBitField::SetBit(const int n) // установить бит
 {
 	if (n<0)
 	{
-		throw invalid_argument("Bit <0...");
+		throw invalid_argument("Bit < 0...");
+	}
+	if (n>BitLen)
+	{
+		throw invalid_argument("BitLen < n...");
 	}
 	pMem[GetMemIndex(n)] = pMem[GetMemIndex(n)] | GetMemMask(n);
 }
@@ -70,13 +74,24 @@ void TBitField::SetBit(const int n) // установить бит
 void TBitField::ClrBit(const int n) // очистить бит
 {
 	if (n<0) {
-		throw invalid_argument("Bit <0...");
+		throw invalid_argument("Bit < 0...");
+	}
+	if (n>BitLen) {
+		throw invalid_argument("BitLen < n...");
 	}
 	pMem[GetMemIndex(n)] = pMem[GetMemIndex(n)] & ~GetMemMask(n);
 }
 
 int TBitField::GetBit(const int n) const // получить значение бита
 {
+	if (n<0)
+	{
+		throw invalid_argument("n < 0...");
+	}
+	if (n>BitLen)
+	{
+		throw invalid_argument("BitLen < n...");
+	}
 	return (pMem[GetMemIndex(n)] & GetMemMask(n)) != 0;
 }
 
@@ -125,7 +140,14 @@ int TBitField::operator==(const TBitField &bf) const // сравнение
 
 int TBitField::operator!=(const TBitField &bf) const // сравнение
 {
-  return 0;
+	if (*this == bf)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
 }
 
 TBitField TBitField::operator|(const TBitField &bf) // операция "или"
