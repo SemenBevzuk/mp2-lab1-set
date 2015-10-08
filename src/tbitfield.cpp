@@ -130,18 +130,6 @@ int TBitField::operator==(const TBitField &bf) const // сравнение
 				return result;
 			}
 		}
-		//for (int i = 0; i < MemLen; i++)
-		//{
-		//	for (int j = 0; j < BitLen; j++)
-		//	{
-		//		
-		//	}
-		//	/*if (pMem[i] != bf.pMem[i])
-		//	{
-		//		result = 0;
-		//		return result;
-		//	}*/
-		//}
 	}
 	else
 	{
@@ -218,10 +206,32 @@ TBitField TBitField::operator~(void) // отрицание
 
 istream &operator>>(istream &istr, TBitField &bf) // ввод
 {
+	// как последовательность 0 и 1
+	char c;
+	int i = 0;
+	istr >> c;
+	while ((c == '1') || (c == '0'))
+	{
+		if (c == '1')
+		{
+			bf.SetBit(i);
+			i++;
+		}
+		else
+		{
+			bf.ClrBit(i);
+			i++;
+		}
+	}
 	return istr;
 }
 
 ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 {
+	ostr << "Length = " << bf.BitLen << "\n";
+	for (int i = 0; i < bf.BitLen; i++)
+	{
+		ostr << bf.GetBit(i);
+	}
 	return ostr;
 }
