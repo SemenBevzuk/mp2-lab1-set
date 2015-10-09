@@ -53,42 +53,57 @@ void TSet::DelElem(const int Elem) // исключение элемента мн
 
 TSet& TSet::operator=(const TSet &s) // присваивание
 {
+	BitField = s.BitField;
+	MaxPower = s.GetMaxPower();
 	return *this;
 }
 
 int TSet::operator==(const TSet &s) const // сравнение
 {
-    return 0;
+    return BitField == s.BitField;
 }
 
 int TSet::operator!=(const TSet &s) const // сравнение
 {
-	return 0;
+	return BitField!=s.BitField;
 }
 
 TSet TSet::operator+(const TSet &s) // объединение
 {
-	return *this;
+	TSet result(BitField | s.BitField);
+	return result;
 }
 
 TSet TSet::operator+(const int Elem) // объединение с элементом
 {
-	return *this;
+	if (Elem > BitField.GetLength())
+	{
+		throw ("Elem > Length");
+	}
+	TBitField temp(MaxPower);
+	temp.SetBit(Elem);
+	TSet result(BitField | temp);
+	return result;
 }
 
 TSet TSet::operator-(const int Elem) // разность с элементом
 {
-	return *this;
+	TBitField temp(MaxPower);
+	temp.SetBit(Elem);
+	TSet result(BitField & temp);
+	return result;
 }
 
 TSet TSet::operator*(const TSet &s) // пересечение
 {
-	return *this;
+	TSet result(BitField & s.BitField);
+	return result;
 }
 
 TSet TSet::operator~(void) // дополнение
 {
-	return *this;
+	TSet result(~BitField);
+	return result;
 }
 
 // перегрузка ввода/вывода
