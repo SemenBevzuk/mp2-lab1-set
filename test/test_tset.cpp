@@ -143,7 +143,7 @@ TEST(TSet, throws_when_insert_non_existing_element_out_of_range_using_plus_opera
   set.InsElem(0);
   set.InsElem(2);
 
-  ASSERT_ANY_THROW(updatedSet = set + k);
+  ASSERT_ANY_THROW(updatedSet = set + k);//???
 }
 
 TEST(TSet, can_insert_existing_element_using_plus_operator)
