@@ -108,12 +108,36 @@ TSet TSet::operator~(void) // дополнение
 
 // перегрузка ввода/вывода
 
-istream &operator>>(istream &istr, TSet &s) // ввод
+istream &operator>>(istream &istr, TSet &s) // ввод {s1,s2,s3}
 {
+	int i = 0;
+	char c;
+	do
+	{
+		istr >> c;
+	} while (c != '{');
+	do
+	{
+		istr >> i;
+		s.InsElem(i);
+		do
+		{
+			istr >> c;
+		} while ((c = ',')&&(c = '}'));
+	} while (c != '}');
 	return istr;
 }
 
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
+	ostr << '{';
+	for (int i = 0; i < s.GetMaxPower(); i++)
+	{
+		if (s.IsMember(i) == 1)
+		{
+			ostr << ' ' << i << ',';
+		}
+	}
+	ostr << '}';
 	return ostr;
 }
