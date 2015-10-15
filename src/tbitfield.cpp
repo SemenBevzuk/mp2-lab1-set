@@ -6,6 +6,7 @@
 // Битовое поле
 
 #include "tbitfield.h"
+#include <sstream>
 
 TBitField::TBitField(int len)
 {
@@ -221,13 +222,13 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
 		if (c == '1')
 		{
 			bf.SetBit(i);
-			i++;
 		}
-		else
+		if (c == '0') 
 		{
 			bf.ClrBit(i);
-			i++;
 		}
+		i++;
+		istr >> c;
 	}
 	return istr;
 }

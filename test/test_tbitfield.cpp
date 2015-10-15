@@ -1,6 +1,8 @@
 #include "tbitfield.h"
 
 #include <gtest.h>
+#include <string> 
+#include <sstream>
 
 TEST(TBitField, can_create_bitfield_with_positive_length)
 {
@@ -305,4 +307,42 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
   bf2.SetBit(2);
 
   EXPECT_NE(bf1, bf2);
+}
+TEST(TBitField, input_stream_test) {
+	const int size = 3;
+	TBitField bf_expected(size), bf_actual(size);
+	TELEM input[3];
+
+	//101
+	bf_expected.SetBit(0);
+	bf_expected.SetBit(2);
+
+	stringstream input_stream;
+	input_stream << "101"<<'\0';
+	input_stream >> bf_actual;
+
+	EXPECT_EQ(bf_expected, bf_actual);
+}
+
+TEST(TBitField, output_stream_test) {
+	const int size = 3;
+	TBitField bf(size);
+	string bf_actual;
+
+
+	//101
+	bf.SetBit(0);
+	bf.SetBit(2);
+	
+	stringstream output_stream;
+	output_stream << bf;
+
+	output_stream >> bf_actual;
+	ASSERT_EQ("Length", bf_actual);
+	output_stream >> bf_actual;
+	ASSERT_EQ("=", bf_actual);
+	output_stream >> bf_actual;
+	ASSERT_EQ("3", bf_actual);
+	output_stream >> bf_actual;
+	ASSERT_EQ("101", bf_actual);
 }
