@@ -109,7 +109,7 @@ TEST(TBitField, can_assign_bitfields_of_equal_size)
   }
   bf2 = bf1;
 
-  EXPECT_NE(0, bf2.GetBit(0));
+   (0, bf2.GetBit(0));
   EXPECT_NE(0, bf2.GetBit(1));
 }
 
@@ -311,7 +311,6 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 TEST(TBitField, input_stream_test) {
 	const int size = 3;
 	TBitField bf_expected(size), bf_actual(size);
-	TELEM input[3];
 
 	//101
 	bf_expected.SetBit(0);
